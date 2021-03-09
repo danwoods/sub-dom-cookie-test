@@ -26,11 +26,12 @@ export default function Home() {
     document.cookie = `${window.location.host}=${val}; domain=danwoodson.com`
   }
   const getFromCookie = () => {
-    return getCookieValue(
+    const from =
       window.location.host === 'cookie-test-a.danwoodson.com'
         ? 'cookie-test-b.danwoodson.com'
         : 'cookie-test-a.danwoodson.com'
-    )
+    console.log(`Getting cookie value from: ${from}`)
+    return getCookieValue(from)
   }
 
   return (
