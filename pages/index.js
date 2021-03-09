@@ -23,6 +23,7 @@ export default function Home() {
   const [val, setVal] = useState('')
 
   const saveToCookie = () => {
+    console.log('SAVING TO COOKIE: ', window.location.host, val)
     document.cookie = `${window.location.host}=${val}; domain=danwoodson.com`
   }
   const getFromCookie = () => {
