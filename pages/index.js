@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import { useState } from 'react'
 
 export default function Home() {
   if (typeof window !== 'undefined') {
-    document.cookie = 'userId=nick123; domain=danwoodson.com'
+    document.cookie = `userId=nick123; domain=danwoodson.com`
     /*
     var getActive = browser.tabs.query({ active: true, currentWindow: true })
     getActive.then(setCookie)
@@ -18,6 +19,12 @@ export default function Home() {
 		*/
   }
 
+  const [val, setVal] = useState('')
+
+  const saveToCookie = () => {
+    document.cookie = `${window.location.host}=${val}; domain=danwoodson.com`
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -29,6 +36,13 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+
+        <input
+          type="text"
+          value={val}
+          onChange={(e) => setVal(e.target.value)}
+        />
+        <button onClick={saveToCookie}>{'Save to cookie'}</button>
 
         <p className={styles.description}>
           Get started by editing{' '}
