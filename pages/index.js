@@ -17,7 +17,9 @@ function getCookieValue(name) {
 }
 
 export default function Home() {
-  console.log('HOST: ', window.location.host)
+  if (typeof window !== 'undefined') {
+    console.log('HOST: ', window.location.host)
+  }
   const [val, setVal] = useState('')
 
   const saveToCookie = () => {
