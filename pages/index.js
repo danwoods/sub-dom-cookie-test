@@ -2,15 +2,17 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
-  var getActive = browser.tabs.query({ active: true, currentWindow: true })
-  getActive.then(setCookie)
+  if (typeof window !== 'undefined') {
+    var getActive = browser.tabs.query({ active: true, currentWindow: true })
+    getActive.then(setCookie)
 
-  function setCookie(tabs) {
-    browser.cookies.set({
-      url: tabs[0].url,
-      name: 'favourite-colour',
-      value: 'red'
-    })
+    function setCookie(tabs) {
+      browser.cookies.set({
+        url: tabs[0].url,
+        name: 'favourite-colour',
+        value: 'red'
+      })
+    }
   }
 
   return (
