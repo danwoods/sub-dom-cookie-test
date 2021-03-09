@@ -17,26 +17,17 @@ function getCookieValue(name) {
 }
 
 export default function Home() {
-  if (typeof window !== 'undefined') {
-    document.cookie = `userId=nick123; domain=danwoodson.com`
-    /*
-    var getActive = browser.tabs.query({ active: true, currentWindow: true })
-    getActive.then(setCookie)
-
-    function setCookie(tabs) {
-      browser.cookies.set({
-        url: tabs[0].url,
-        name: 'favourite-colour',
-        value: 'red'
-      })
-    }
-		*/
-  }
-
   const [val, setVal] = useState('')
 
   const saveToCookie = () => {
     document.cookie = `${window.location.host}=${val}; domain=danwoodson.com`
+  }
+  const getFromCookie = () => {
+    return getCookieValue(
+      window.location.host === 'cookie-test-a.danwoodson.com'
+        ? 'cookie-test-b.danwoodson.com'
+        : 'cookie-test-a.danwoodson.com'
+    )
   }
 
   return (
@@ -57,12 +48,9 @@ export default function Home() {
           onChange={(e) => setVal(e.target.value)}
         />
         <button onClick={saveToCookie}>{'Save to cookie'}</button>
-
-        <div>{`Current value of other: ${getCookieValue(
-          window.location.host === 'cookie-test-a.danwoodson.com'
-            ? 'cookie-test-b.danwoodson.com'
-            : 'cookie-test-a.danwoodson.com'
-        )}`}</div>
+        {typeof window !== 'undefined' ? (
+          <div>{`Current value of other: ${getFromCookie()}`}</div>
+        ) : null}
 
         <p className={styles.description}>
           Get started by editing{' '}
