@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 
 export default function Home() {
   if (typeof window !== 'undefined') {
-    document.cookie = 'userId=nick123;'
+    document.cookie = 'userId=nick123; domain=danwoodson.com'
     /*
     var getActive = browser.tabs.query({ active: true, currentWindow: true })
     getActive.then(setCookie)
