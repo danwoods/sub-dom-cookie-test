@@ -2,6 +2,20 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react'
 
+function getCookieValue(name) {
+  const nameString = name + '='
+
+  const value = document.cookie.split(';').filter((item) => {
+    return item.includes(nameString)
+  })
+
+  if (value.length) {
+    return value[0].substring(nameString.length, value[0].length)
+  } else {
+    return ''
+  }
+}
+
 export default function Home() {
   if (typeof window !== 'undefined') {
     document.cookie = `userId=nick123; domain=danwoodson.com`
@@ -43,6 +57,12 @@ export default function Home() {
           onChange={(e) => setVal(e.target.value)}
         />
         <button onClick={saveToCookie}>{'Save to cookie'}</button>
+
+        <div>{`Current value of other: ${getCookieValue(
+          window.location.host === 'cookie-test-a.danwoodson.com'
+            ? 'cookie-test-b.danwoodson.com'
+            : 'cookie-test-a.danwoodson.com'
+        )}`}</div>
 
         <p className={styles.description}>
           Get started by editing{' '}
