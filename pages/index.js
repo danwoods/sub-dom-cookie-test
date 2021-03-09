@@ -31,6 +31,7 @@ export default function Home() {
         ? 'cookie-test-b.danwoodson.com'
         : 'cookie-test-a.danwoodson.com'
     console.log(`Getting cookie value from: ${from}`)
+    console.log(`Cookies: ${document.cookie}`)
     return getCookieValue(from)
   }
 
