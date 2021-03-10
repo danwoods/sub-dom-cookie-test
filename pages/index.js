@@ -39,14 +39,12 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Sub Domain Cookie Testing</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <h1 className={styles.title}>Sub Domain Cookie Testing</h1>
 
         <input
           type="text"
@@ -57,7 +55,7 @@ export default function Home() {
         {typeof window !== 'undefined' ? (
           <div>{`Current value of other: ${getFromCookie()}`}</div>
         ) : null}
-
+        {/*
         <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
@@ -92,6 +90,7 @@ export default function Home() {
             </p>
           </a>
         </div>
+					*/}
       </main>
 
       <footer className={styles.footer}>
